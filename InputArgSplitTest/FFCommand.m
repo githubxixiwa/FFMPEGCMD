@@ -45,6 +45,7 @@ char** str_split(char* a_str, const char a_delim, int *retCount)
                 count++;
                 preDelim = 1;
                 printf("space  %c\n", *tmp);
+                
             }
             last_comma = tmp;
         } else {
@@ -76,9 +77,11 @@ char** str_split(char* a_str, const char a_delim, int *retCount)
 
     NSLog(@"ffmpeg command params count = %d idx = %d", (int)count, (int)idx);
     for(int i=0; i<=count; i++) {
-      NSLog(@"ffmpeg command after:  %s", *result);
+        printf("  %s", *result);
         result++;
     }
+    printf("\n");
+
     return result;
 }
 
