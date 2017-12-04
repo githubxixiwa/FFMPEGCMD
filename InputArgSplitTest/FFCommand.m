@@ -45,7 +45,7 @@ char** str_split(char* a_str, const char a_delim, int *retCount)
                 count++;
                 preDelim = 1;
                 printf("space  %c\n", *tmp);
-                
+                *tmp = '`';
             }
             last_comma = tmp;
         } else {
@@ -57,7 +57,8 @@ char** str_split(char* a_str, const char a_delim, int *retCount)
     
     //Add space for trailing token.
     count += last_comma < (a_str + strlen(a_str) - 1);
-    
+    printf(" last_comma %c str %c \n", last_comma, (a_str + strlen(a_str) - 1) );
+
     /* Add space for terminating null string so caller
      knows where the list of returned strings ends. */
 
@@ -65,22 +66,34 @@ char** str_split(char* a_str, const char a_delim, int *retCount)
     memset(result, 0, sizeof(char*) * count);
 
     if (result) {
-        char* token = strtok(a_str, delim);
+        char* token = strtok(a_str, "`");
 
         while (token) {
             *(result + idx++) = strdup(token);
-            token = strtok(0, delim);
+            token = strtok(0, "`");
         }
     }
 
     *retCount = (int)count;
 
     NSLog(@"ffmpeg command params count = %d idx = %d", (int)count, (int)idx);
-    for(int i=0; i<=count; i++) {
+    printf(" result[0] %s \n", result[0]);
+    printf(" result[1] %s \n", result[1]);
+    printf(" result[2] %s \n", result[2]);
+    printf(" result[3] %s \n", result[3]);
+    printf(" result[4] %s \n", result[4]);
+    printf(" result[5] %s \n", result[5]);
+    printf(" result[6] %s \n", result[6]);
+    //printf(" result[7] %s \n", result[7]);
+
+    for(int i=0; i<count; i++) {
         printf("  %s", *result);
         result++;
     }
+    
     printf("\n");
+    printf("\n");
+
 
     return result;
 }
