@@ -19,7 +19,7 @@ int main(int argc, const char * argv[]) {
     
     //NSString * inFile1 = [[self applicationDocumentsDirectory] stringByAppendingString:@"/in.wav"];
     //NSString * outFile1 = [[self applicationDocumentsDirectory] stringByAppendingString:@"/output_reverse.wav"];
-    NSString * inFile1 = @"/in    test.wav";
+    NSString * inFile1 = @"/in.wav";
     NSString * outFile1 = @"/output_reverse.wav";
     FFParamBuilder *paramBuilder = [[FFParamBuilder alloc] init];
     paramBuilder.inputPath = inFile1;
@@ -27,8 +27,9 @@ int main(int argc, const char * argv[]) {
     
     NSString *command = [paramBuilder buildAudioReverseParam];
     NSLog(@"command is %@", command);
-    
-    [FFProcessingSession processWithCommand:command];
+//    for(int i=0; i< 1000000; i++) {
+//    //[FFProcessingSession processWithCommand:command];
+//    }
     
     return 0;
 }
